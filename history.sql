@@ -51,5 +51,17 @@ CREATE TABLE
     );
 
 /* query for SET DEFAULT value to each field of table */
-
-ALTER TABLE `users` ALTER `age` SET DEFAULT '10';
+ALTER TABLE `users` ALTER `age` SET DEFAULT '10';/
+/*MODIFY is to edit COLUMN of table*/
+ALTER TABLE `users` MODIFY `city` VARCHAR(120);
+/*for ADD new COLUMN to TABLE*/
+ALTER TABLE users  ADD COLUMN `city` VARCHAR(255);
+/*for DROP COLUMN of table*/
+ALTER TABLE `users` DROP COLUMN `email`;
+/*use COLUMNs ADD UNIQUE() to make a COLUMN as Uniqe data*/
+ALTER TABLE `users` ADD UNIQU(email);
+/*can use UNIQUE inside create Table but it should be end of all fieldes*/
+CREATE Table `cars`(
+	`id` INT NOT NULL,
+	UNIQUE(id)
+);

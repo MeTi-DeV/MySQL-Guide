@@ -51,17 +51,59 @@ CREATE TABLE
     );
 
 /* query for SET DEFAULT value to each field of table */
-ALTER TABLE `users` ALTER `age` SET DEFAULT '10';/
+
+ALTER TABLE `users` ALTER `age` SET DEFAULT '10';
+
+/
+
 /*MODIFY is to edit COLUMN of table*/
+
 ALTER TABLE `users` MODIFY `city` VARCHAR(120);
+
 /*for ADD new COLUMN to TABLE*/
-ALTER TABLE users  ADD COLUMN `city` VARCHAR(255);
+
+ALTER TABLE users ADD COLUMN `city` VARCHAR(255);
+
 /*for DROP COLUMN of table*/
+
 ALTER TABLE `users` DROP COLUMN `email`;
+
 /*use COLUMNs ADD UNIQUE() to make a COLUMN as Uniqe data*/
+
 ALTER TABLE `users` ADD UNIQU(email);
+
 /*can use UNIQUE inside create Table but it should be end of all fieldes*/
-CREATE Table `cars`(
-	`id` INT NOT NULL,
-	UNIQUE(id)
-);
+
+CREATE Table `cars`( `id` INT NOT NULL, UNIQUE(id) );
+
+/* add PRIMARY KEY to COLUMN of TABLE */
+
+ALTER TABLE `users` ADD CONSTRAINT PK_users PRIMARY KEY (id);
+
+/* add PRIMARY KEY and FOREIGN KEY inside CREATE TABLE */
+
+CREATE TABLE
+    cars(
+        `id` int NOT NULL AUTO_INCREMENT,
+        `car_name` VARCHAR(255),
+        `user_id` int,
+        PRIMARY KEY (id),
+        FOREIGN KEY (user_id) REFERENCES users(id)
+    );
+
+/*(Example From W3School DB) add INDEX to each column of table (index use form dataes we search on theme many time )*/
+
+CREATE INDEX idx_country ON customers(Country);
+
+/*(Example From W3School DB) for delete index of a COLUMN in TABLE*/
+
+ALTER TABLE customers DROP INDEX idx_country;
+
+/*(Example From W3School DB) add INDEX when create new table*/
+
+CREATE TABLE
+    `cars`(
+        `id` int,
+        `name` varchar(255),
+        INDEX(id, name)
+    )

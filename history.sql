@@ -107,7 +107,8 @@ CREATE TABLE
         `name` varchar(255),
         INDEX(id, name)
     );
-
+/******************** CRUD *******************/
+/****READ****/
 /*(start CRUD) for show all data of any colum of table example: show all `ProductName`*/
 
 SELECT `ProductName` FROM products;
@@ -184,3 +185,21 @@ SELECT * FROM products ORDER BY `Price` DESC ;
 SELECT * FROM customers ORDER BY `Country` , `CustomerName`;
 /* also ASC and DESC working for all of them*/
 SELECT * FROM customers ORDER BY `Country` ASC, `CustomerName` DESC;
+/********************Continue CRUD*******************/
+/****CREATE****/
+/*next step of CRUD is create new record to tabel*/
+/* its start with INSERT INTO and after that we choose table that we decide to add new record.
+after that open () and inside it we choose columns that should fill with data like `CategoryName` and `Description` in the following use VALUES key and inside () we define those dataes like 'Sports' and 'Sport Products'*/
+
+INSERT INTO categories (`CategoryName` ,`Description`)VALUES('Sports' , 'Sport Products');
+/****DELETE****/
+/*for delete a record from table*/
+/*💀💀!!!!!!!!!!!!!!!!!!!!!!!!!!   ATENTION   !!!!!!!!!!!!!!!!!!!!!!!!!!💀💀*/
+/*its very important to choose which record will be deleted if you don't choose that and for example only run DELETE FROM categories it's will delete all records inside your table*/
+/*it's better to delete records by something like `CategoryID` because it's as PRIMARY*/
+DELETE FROM categories WHERE `CategoryID`=9;
+/****UPDATE****/
+/*for update a record from table*/
+/*💀💀!!!!!!!!!!!!!!!!!!!!!!!!!!   ATENTION   !!!!!!!!!!!!!!!!!!!!!!!!!!💀💀*/
+/*just like deleting in update we should choose which record will update and if don't do this , all records data will update */
+UPDATE categories SET `CategoryName`='Cat-name' ,`Description`='Cat-desc' WHERE `CategoryID`=8;

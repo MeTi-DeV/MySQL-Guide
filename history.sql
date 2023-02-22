@@ -131,7 +131,9 @@ SELECT DISTINCT `Country` FROM customers ;
 SELECT * FROM customers WHERE `Country`='Germany';
 
 SELECT * FROM customers WHERE `CustomerID`>20;
+
 /* oprators in SQL AND NOT OR (it's most like programming languages like && ! ||)*/
+
 SELECT *
 FROM customers
 WHERE
@@ -145,7 +147,9 @@ SELECT * FROM products WHERE `Price` = 18 OR `Price`=20 ;
 SELECT * FROM products WHERE NOT `Price`=19 AND NOT `Price`=20 ;
 
 SELECT * FROM products WHERE `Price`<>19 AND `Price`<>20 ;
+
 /* multie usage from oprators*/
+
 SELECT *
 FROM products
 WHERE
@@ -163,8 +167,20 @@ WHERE
         `City` = 'Stuttgart'
         OR `City` = 'Berlin'
     );
-    SELECT *
+
+SELECT *
 FROM customers
 WHERE
     NOT `Country` = 'USA'
     AND NOT `Country` = 'Brazil';
+/*for sorting data as ascending and descending use ORDER BY*/
+SELECT * FROM customers ORDER BY `CustomerName` ;
+/*ASC for ascending and its as default*/
+/*ASC for ascending and its as default*/
+SELECT * FROM products ORDER BY `Price` ASC ;
+/*DESC for descending and for apply should write it*/
+SELECT * FROM products ORDER BY `Price` DESC ;
+/* also we can sorting data as several values just enough to write those*/
+SELECT * FROM customers ORDER BY `Country` , `CustomerName`;
+/* also ASC and DESC working for all of them*/
+SELECT * FROM customers ORDER BY `Country` ASC, `CustomerName` DESC;

@@ -106,4 +106,103 @@ CREATE TABLE
         `id` int,
         `name` varchar(255),
         INDEX(id, name)
-    )
+    );
+/******************** CRUD *******************/
+/****READ****/
+/*(start CRUD) for show all data of any colum of table example: show all `ProductName`*/
+
+SELECT `ProductName` FROM products;
+
+SELECT `Country` FROM customers;
+
+/*show two columns of data in products*/
+
+SELECT `ProductName` , `Price` FROM products;
+
+/*show all data of table*/
+
+SELECT * FROM products;
+
+/*DISTINCT don't show duplicated of data in each field*/
+
+SELECT DISTINCT `Country` FROM customers ;
+
+/*WHERE define Condition for show dataes Contains of this condition*/
+
+SELECT * FROM customers WHERE `Country`='Germany';
+
+SELECT * FROM customers WHERE `CustomerID`>20;
+
+/* operators in SQL AND NOT OR (it's most like programming languages like && ! ||)*/
+
+SELECT *
+FROM customers
+WHERE
+    `Country` = 'Germany'
+    AND `City` = 'Berlin';
+
+SELECT * FROM products WHERE `ProductName`='Chang' AND `Price`=19;
+
+SELECT * FROM products WHERE `Price` = 18 OR `Price`=20 ;
+
+SELECT * FROM products WHERE NOT `Price`=19 AND NOT `Price`=20 ;
+
+SELECT * FROM products WHERE `Price`<>19 AND `Price`<>20 ;
+
+/* multie usage from operators*/
+
+SELECT *
+FROM products
+WHERE
+    `ProductName` = 'Chang'
+    AND(
+        `Price` = 18
+        OR `Price` = 19
+    );
+
+SELECT *
+FROM customers
+WHERE
+    `Country` = 'Germany'
+    AND (
+        `City` = 'Stuttgart'
+        OR `City` = 'Berlin'
+    );
+
+SELECT *
+FROM customers
+WHERE
+    NOT `Country` = 'USA'
+    AND NOT `Country` = 'Brazil';
+/*for sorting data as ascending and descending use ORDER BY*/
+SELECT * FROM customers ORDER BY `CustomerName` ;
+/*ASC for ascending and its as default*/
+/*ASC for ascending and its as default*/
+SELECT * FROM products ORDER BY `Price` ASC ;
+/*DESC for descending and for apply should write it*/
+SELECT * FROM products ORDER BY `Price` DESC ;
+/* also we can sorting data as several values just enough to write those*/
+SELECT * FROM customers ORDER BY `Country` , `CustomerName`;
+/* also ASC and DESC working for all of them*/
+SELECT * FROM customers ORDER BY `Country` ASC, `CustomerName` DESC;
+/********************Continue CRUD*******************/
+/****CREATE****/
+/*next step of CRUD is create new record to tabel*/
+/* its start with INSERT INTO and after that we choose table that we decide to add new record.
+after that open () and inside it we choose columns that should fill with data like `CategoryName` and `Description` in the following use VALUES key and inside () we define those dataes like 'Sports' and 'Sport Products'*/
+
+INSERT INTO categories (`CategoryName` ,`Description`)VALUES('Sports' , 'Sport Products');
+/****DELETE****/
+/*for delete a record from table*/
+/*💀💀!!!!!!!!!!!!!!!!!!!!!!!!!!   ATENTION   !!!!!!!!!!!!!!!!!!!!!!!!!!💀💀*/
+/*its very important to choose which record will be deleted if you don't choose that and for example only run DELETE FROM categories it's will delete all records inside your table*/
+/*it's better to delete records by something like `CategoryID` because it's as PRIMARY*/
+DELETE FROM categories WHERE `CategoryID`=9;
+/****UPDATE****/
+/*for update a record from table*/
+/*💀💀!!!!!!!!!!!!!!!!!!!!!!!!!!   ATENTION   !!!!!!!!!!!!!!!!!!!!!!!!!!💀💀*/
+/*just like deleting in update we should choose which record will update and if don't do this , all records data will update */
+UPDATE categories SET `CategoryName`='Cat-name' ,`Description`='Cat-desc' WHERE `CategoryID`=8;
+/*IS operator*/
+SELECT * FROM categories WHERE `Description` IS NULL;
+SELECT * FROM categories WHERE `Description` IS NOT NULL;

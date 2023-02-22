@@ -106,4 +106,28 @@ CREATE TABLE
         `id` int,
         `name` varchar(255),
         INDEX(id, name)
-    )
+    );
+
+/*(start CRUD) for show all data of any colum of table example: show all `ProductName`*/
+
+SELECT `ProductName` FROM products;
+
+SELECT `Country` FROM customers;
+
+/*show two columns of data in products*/
+
+SELECT `ProductName` , `Price` FROM products;
+
+/*show all data of table*/
+
+SELECT * FROM products;
+
+/*DISTINCT don't show duplicated of data in each field*/
+
+SELECT DISTINCT `Country` FROM customers ;
+
+/*WHERE define Condition for show dataes Contains of this condition*/
+
+SELECT * FROM customers WHERE `Country`='Germany';
+
+SELECT * FROM customers WHERE `CustomerID`>20;

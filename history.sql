@@ -131,3 +131,40 @@ SELECT DISTINCT `Country` FROM customers ;
 SELECT * FROM customers WHERE `Country`='Germany';
 
 SELECT * FROM customers WHERE `CustomerID`>20;
+/* oprators in SQL AND NOT OR (it's most like programming languages like && ! ||)*/
+SELECT *
+FROM customers
+WHERE
+    `Country` = 'Germany'
+    AND `City` = 'Berlin';
+
+SELECT * FROM products WHERE `ProductName`='Chang' AND `Price`=19;
+
+SELECT * FROM products WHERE `Price` = 18 OR `Price`=20 ;
+
+SELECT * FROM products WHERE NOT `Price`=19 AND NOT `Price`=20 ;
+
+SELECT * FROM products WHERE `Price`<>19 AND `Price`<>20 ;
+/* multie usage from oprators*/
+SELECT *
+FROM products
+WHERE
+    `ProductName` = 'Chang'
+    AND(
+        `Price` = 18
+        OR `Price` = 19
+    );
+
+SELECT *
+FROM customers
+WHERE
+    `Country` = 'Germany'
+    AND (
+        `City` = 'Stuttgart'
+        OR `City` = 'Berlin'
+    );
+    SELECT *
+FROM customers
+WHERE
+    NOT `Country` = 'USA'
+    AND NOT `Country` = 'Brazil';

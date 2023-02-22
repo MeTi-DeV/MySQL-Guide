@@ -133,7 +133,7 @@ SELECT * FROM customers WHERE `Country`='Germany';
 
 SELECT * FROM customers WHERE `CustomerID`>20;
 
-/* oprators in SQL AND NOT OR (it's most like programming languages like && ! ||)*/
+/* operators in SQL AND NOT OR (it's most like programming languages like && ! ||)*/
 
 SELECT *
 FROM customers
@@ -149,7 +149,7 @@ SELECT * FROM products WHERE NOT `Price`=19 AND NOT `Price`=20 ;
 
 SELECT * FROM products WHERE `Price`<>19 AND `Price`<>20 ;
 
-/* multie usage from oprators*/
+/* multie usage from operators*/
 
 SELECT *
 FROM products
@@ -203,3 +203,6 @@ DELETE FROM categories WHERE `CategoryID`=9;
 /*💀💀!!!!!!!!!!!!!!!!!!!!!!!!!!   ATENTION   !!!!!!!!!!!!!!!!!!!!!!!!!!💀💀*/
 /*just like deleting in update we should choose which record will update and if don't do this , all records data will update */
 UPDATE categories SET `CategoryName`='Cat-name' ,`Description`='Cat-desc' WHERE `CategoryID`=8;
+/*IS operator*/
+SELECT * FROM categories WHERE `Description` IS NULL;
+SELECT * FROM categories WHERE `Description` IS NOT NULL;

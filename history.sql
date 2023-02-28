@@ -131,3 +131,20 @@ SELECT DISTINCT `Country` FROM customers ;
 SELECT * FROM customers WHERE `Country`='Germany';
 
 SELECT * FROM customers WHERE `CustomerID`>20;
+
+/********************  Methods  *******************/
+
+SELECT MAX(`Price`) FROM products;
+
+SELECT MIN(`Price`) FROM products;
+
+SELECT COUNT(`CustomerID`) FROM customers;
+
+SELECT AVG(`Price`) FROM products;
+
+SELECT SUM(`Quantity`) FROM order_details;
+
+SELECT * FROM products WHERE `Price` IN(81,55,53);
+
+SELECT * FROM customers WHERE `Country` IN('Germany','USA','Brazil');
+SELECT * FROM products WHERE `Price` BETWEEN 50 AND 80;

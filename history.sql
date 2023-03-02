@@ -174,3 +174,11 @@ ORDER BY `ProductName` DESC;
 SELECT `ProductID` AS id FROM products;
 
 SELECT `ProductID` AS `id` ,`ProductName` AS `name` FROM products;
+/* LIKE use for searching records start with any characters for example 'h' at below write % after or before character mean any character could be after or before that */
+SELECT * FROM customers WHERE `CustomerName` LIKE 'h%';
+SELECT * FROM customers WHERE `CustomerName` LIKE '%h%';
+SELECT * FROM customers WHERE `CustomerName` LIKE '%h';
+/* write _ after or before character mean any character should be after or before that */
+SELECT * FROM customers WHERE `CustomerName` LIKE '_a';
+/* write % between characters mean any character could be between that */
+SELECT * FROM customers WHERE `CustomerName` LIKE 'a%s';

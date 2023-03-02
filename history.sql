@@ -91,6 +91,14 @@ CREATE TABLE
         FOREIGN KEY (user_id) REFERENCES users(id)
     );
 
+/*
+ **********************************************************************
+ ***                                                                ***
+ ***                      W3School Examples                         ***
+ ***                                                                ***
+ **********************************************************************
+ */
+
 /*(Example From W3School DB) add INDEX to each column of table (index use form dataes we search on theme many time )*/
 
 CREATE INDEX idx_country ON customers(Country);
@@ -107,8 +115,7 @@ CREATE TABLE
         `name` varchar(255),
         INDEX(id, name)
     );
-/******************** CRUD *******************/
-/****READ****/
+
 /*(start CRUD) for show all data of any colum of table example: show all `ProductName`*/
 
 SELECT `ProductName` FROM products;
@@ -133,5 +140,45 @@ SELECT * FROM customers WHERE `Country`='Germany';
 
 SELECT * FROM customers WHERE `CustomerID`>20;
 
+/********************  Methods  *******************/
 
+SELECT MAX(`Price`) FROM products;
 
+SELECT MIN(`Price`) FROM products;
+
+SELECT COUNT(`CustomerID`) FROM customers;
+
+SELECT AVG(`Price`) FROM products;
+
+SELECT SUM(`Quantity`) FROM order_details;
+
+SELECT * FROM products WHERE `Price` IN(81,55,53);
+
+SELECT * FROM customers WHERE `Country` IN('Germany','USA','Brazil');
+
+SELECT * FROM products WHERE `Price` BETWEEN 50 AND 80;
+
+SELECT *
+FROM products
+WHERE
+    `Price` BETWEEN 50 AND 100
+    AND `ProductID` NOT IN(10, 20, 30);
+
+SELECT *
+FROM products
+WHERE
+    `Price` BETWEEN 50 AND 100
+    AND `ProductID` NOT IN(10, 20, 30)
+ORDER BY `ProductName` DESC;
+
+SELECT `ProductID` AS id FROM products;
+
+SELECT `ProductID` AS `id` ,`ProductName` AS `name` FROM products;
+/* LIKE use for searching records start with any characters for example 'h' at below write % after or before character mean any character could be after or before that */
+SELECT * FROM customers WHERE `CustomerName` LIKE 'h%';
+SELECT * FROM customers WHERE `CustomerName` LIKE '%h%';
+SELECT * FROM customers WHERE `CustomerName` LIKE '%h';
+/* write _ after or before character mean any character should be after or before that */
+SELECT * FROM customers WHERE `CustomerName` LIKE '_a';
+/* write % between characters mean any character could be between that */
+SELECT * FROM customers WHERE `CustomerName` LIKE 'a%s';

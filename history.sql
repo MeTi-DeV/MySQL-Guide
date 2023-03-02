@@ -91,6 +91,14 @@ CREATE TABLE
         FOREIGN KEY (user_id) REFERENCES users(id)
     );
 
+/*
+ **********************************************************************
+ ***                                                                ***
+ ***                      W3School Examples                         ***
+ ***                                                                ***
+ **********************************************************************
+ */
+
 /*(Example From W3School DB) add INDEX to each column of table (index use form dataes we search on theme many time )*/
 
 CREATE INDEX idx_country ON customers(Country);
@@ -147,4 +155,22 @@ SELECT SUM(`Quantity`) FROM order_details;
 SELECT * FROM products WHERE `Price` IN(81,55,53);
 
 SELECT * FROM customers WHERE `Country` IN('Germany','USA','Brazil');
+
 SELECT * FROM products WHERE `Price` BETWEEN 50 AND 80;
+
+SELECT *
+FROM products
+WHERE
+    `Price` BETWEEN 50 AND 100
+    AND `ProductID` NOT IN(10, 20, 30);
+
+SELECT *
+FROM products
+WHERE
+    `Price` BETWEEN 50 AND 100
+    AND `ProductID` NOT IN(10, 20, 30)
+ORDER BY `ProductName` DESC;
+
+SELECT `ProductID` AS id FROM products;
+
+SELECT `ProductID` AS `id` ,`ProductName` AS `name` FROM products;

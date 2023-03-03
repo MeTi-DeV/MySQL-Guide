@@ -194,6 +194,7 @@ SELECT * FROM customers WHERE `CustomerName` LIKE 'a%s';
 /********************  JOIN  *******************/
 
 /***************  INNER JOIN  **************/
+
 /* JOIN 2 table together */
 
 SELECT
@@ -223,7 +224,9 @@ SELECT
     employees.`LastName`
 FROM orders
     INNER JOIN employees ON orders.`EmployeeID` = employees.`EmployeeID`;
+
 /* JOIN 3 table together */
+
 SELECT
     orders.`OrderID`,
     customers.`CustomerName`,
@@ -232,3 +235,42 @@ SELECT
 FROM orders
     INNER JOIN customers ON orders.`CustomerID` = customers.`CustomerID`
     INNER JOIN shippers ON orders.`ShipperID` = shippers.`ShipperID`;
+
+/***************  LEFT JOIN  **************/
+
+SELECT
+    customers.`CustomerName`,
+    orders.`OrderID`
+FROM customers
+    LEFT JOIN orders ON orders.`CustomerID` = customers.`CustomerID`;
+
+/* can add other query after join like ORDER BY */
+
+SELECT
+    customers.`CustomerName`,
+    orders.`OrderID`
+FROM customers
+    LEFT JOIN orders ON orders.`CustomerID` = customers.`CustomerID`
+ORDER BY orders.`OrderID`;
+
+/***************  RIGHT JOIN  **************/
+
+SELECT
+    orders.`OrderID`,
+    employees.`FirstName`,
+    employees.`LastName`
+FROM orders
+    RIGHT JOIN employees ON orders.`EmployeeID` = employees.`EmployeeID`
+ORDER BY orders.`OrderID`;
+
+SELECT
+    orders.`OrderID`,
+    customers.`CustomerName`
+FROM orders
+    RIGHT JOIN customers ON orders.`EmployeeID` = customers.`CustomerID`;
+
+SELECT
+    orders.`OrderID`,
+    shippers.`ShipperName`
+FROM orders
+    RIGHT JOIN shippers ON orders.`ShipperID` = shippers.`ShipperID`;

@@ -274,3 +274,13 @@ SELECT
     shippers.`ShipperName`
 FROM orders
     RIGHT JOIN shippers ON orders.`ShipperID` = shippers.`ShipperID`;
+
+/***************  FULL OUTER JOIN  **************/
+
+SELECT *
+FROM orders
+    LEFT JOIN customers ON orders.`CustomerID` = customers.`CustomerID`
+UNION
+SELECT *
+FROM customers
+    RIGHT JOIN orders ON orders.`CustomerID` = customers.`CustomerID`;

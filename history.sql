@@ -284,3 +284,10 @@ UNION
 SELECT *
 FROM customers
     RIGHT JOIN orders ON orders.`CustomerID` = customers.`CustomerID`;
+/***************  SELF JOIN  **************/
+    /* self join use for inside table here it's example of menu and sub menus and how it works */
+SELECT
+    s.name AS SubMenu,
+    m.name AS Menu
+FROM menus s
+    INNER JOIN menus m ON m.id = s.parent_id;

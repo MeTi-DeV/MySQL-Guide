@@ -174,11 +174,120 @@ ORDER BY `ProductName` DESC;
 SELECT `ProductID` AS id FROM products;
 
 SELECT `ProductID` AS `id` ,`ProductName` AS `name` FROM products;
+
 /* LIKE use for searching records start with any characters for example 'h' at below write % after or before character mean any character could be after or before that */
+
 SELECT * FROM customers WHERE `CustomerName` LIKE 'h%';
+
 SELECT * FROM customers WHERE `CustomerName` LIKE '%h%';
+
 SELECT * FROM customers WHERE `CustomerName` LIKE '%h';
+
 /* write _ after or before character mean any character should be after or before that */
+
 SELECT * FROM customers WHERE `CustomerName` LIKE '_a';
+
 /* write % between characters mean any character could be between that */
+
 SELECT * FROM customers WHERE `CustomerName` LIKE 'a%s';
+
+/********************  JOIN  *******************/
+
+/***************  INNER JOIN  **************/
+
+/* JOIN 2 table together */
+
+SELECT
+    orders.`OrderID`,
+    customers.`CustomerName`
+FROM orders
+    INNER JOIN customers ON orders.`CustomerID` = customers.`CustomerID`;
+
+SELECT
+    orders.`OrderID`,
+    customers.`CustomerName`,
+    customers.`Country`
+FROM orders
+    INNER JOIN customers ON customers.`CustomerID` = orders.`CustomerID`;
+
+SELECT
+    orders.`OrderID`,
+    orders.`OrderDate`,
+    customers.`CustomerName`,
+    customers.`Country`
+FROM orders
+    INNER JOIN customers ON customers.`CustomerID` = orders.`CustomerID`;
+
+SELECT
+    orders.`OrderID`,
+    employees.`FirstName`,
+    employees.`LastName`
+FROM orders
+    INNER JOIN employees ON orders.`EmployeeID` = employees.`EmployeeID`;
+
+/* JOIN 3 table together */
+
+SELECT
+    orders.`OrderID`,
+    customers.`CustomerName`,
+    shippers.`ShipperName`,
+    shippers.`Phone`
+FROM orders
+    INNER JOIN customers ON orders.`CustomerID` = customers.`CustomerID`
+    INNER JOIN shippers ON orders.`ShipperID` = shippers.`ShipperID`;
+
+/***************  LEFT JOIN  **************/
+
+SELECT
+    customers.`CustomerName`,
+    orders.`OrderID`
+FROM customers
+    LEFT JOIN orders ON orders.`CustomerID` = customers.`CustomerID`;
+
+/* can add other query after join like ORDER BY */
+
+SELECT
+    customers.`CustomerName`,
+    orders.`OrderID`
+FROM customers
+    LEFT JOIN orders ON orders.`CustomerID` = customers.`CustomerID`
+ORDER BY orders.`OrderID`;
+
+/***************  RIGHT JOIN  **************/
+
+SELECT
+    orders.`OrderID`,
+    employees.`FirstName`,
+    employees.`LastName`
+FROM orders
+    RIGHT JOIN employees ON orders.`EmployeeID` = employees.`EmployeeID`
+ORDER BY orders.`OrderID`;
+
+SELECT
+    orders.`OrderID`,
+    customers.`CustomerName`
+FROM orders
+    RIGHT JOIN customers ON orders.`EmployeeID` = customers.`CustomerID`;
+
+SELECT
+    orders.`OrderID`,
+    shippers.`ShipperName`
+FROM orders
+    RIGHT JOIN shippers ON orders.`ShipperID` = shippers.`ShipperID`;
+
+/***************  FULL OUTER JOIN  **************/
+
+SELECT *
+FROM orders
+    LEFT JOIN customers ON orders.`CustomerID` = customers.`CustomerID`
+UNION
+SELECT *
+FROM customers
+    RIGHT JOIN orders ON orders.`CustomerID` = customers.`CustomerID`;
+/***************  SELF JOIN  **************/
+    /* self join use for inside table here it's example of menu and sub menus and how it works */
+SELECT
+    s.name AS SubMenu,
+    m.name AS Menu
+FROM menus s
+    INNER JOIN menus m ON m.id = s.parent_id;

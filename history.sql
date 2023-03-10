@@ -284,10 +284,26 @@ UNION
 SELECT *
 FROM customers
     RIGHT JOIN orders ON orders.`CustomerID` = customers.`CustomerID`;
+
 /***************  SELF JOIN  **************/
-    /* self join use for inside table here it's example of menu and sub menus and how it works */
+
+/* self join use for inside table here it's example of menu and sub menus and how it works */
+
 SELECT
     s.name AS SubMenu,
     m.name AS Menu
 FROM menus s
     INNER JOIN menus m ON m.id = s.parent_id;
+
+/***************  END Of JOIN  **************/
+
+/***************  To Be Continue  **************/
+
+/* UNION find Commonalities between tables */
+
+SELECT `City` FROM customers UNION SELECT `City` FROM suppliers ;
+SELECT `City`,`ContactName` FROM customers UNION SELECT `City`,`ContactName` FROM suppliers ;
+
+/* UNION ALL find Commonalities between tables that have same values*/
+
+SELECT city FROM customers UNION ALL SELECT `City` FROM suppliers ;

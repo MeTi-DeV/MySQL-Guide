@@ -302,8 +302,29 @@ FROM menus s
 /* UNION find Commonalities between tables */
 
 SELECT `City` FROM customers UNION SELECT `City` FROM suppliers ;
-SELECT `City`,`ContactName` FROM customers UNION SELECT `City`,`ContactName` FROM suppliers ;
+
+SELECT `City`, `ContactName`
+FROM customers
+UNION
+SELECT `City`, `ContactName`
+FROM suppliers;
 
 /* UNION ALL find Commonalities between tables that have same values*/
 
 SELECT city FROM customers UNION ALL SELECT `City` FROM suppliers ;
+/*GROUP BY : use for show result of any data in tables for example at below
+show count of each `City`*/
+SELECT COUNT(CustomerID),`City` FROM customers GROUP BY `City`;
+/* and for example at below show count of orders at each date */
+SELECT COUNT(`OrderID`),`OrderDate` FROM orders GROUP BY `OrderDate`;
+/* can use GROUP BY with JOIN here QUERY show how many orders sent with wich shipper */
+SELECT
+    shippers.`ShipperName`,
+    COUNT(orders.`OrderID`) AS NumberOfOrders
+FROM orders
+    LEFT JOIN shippers ON shippers.`ShipperID` = orders.`ShipperID`
+GROUP BY `ShipperName`;
+/* can use GROUP BY with JOIN here QUERY show how many orders registered with wich customer */
+SELECT customers.`CustomerName` ,COUNT(orders.`OrderID`) AS NumberOfOrders FROM orders LEFT JOIN  
+customers ON orders.`CustomerID`=customers.`CustomerID` GROUP BY `CustomerName` ;
+
